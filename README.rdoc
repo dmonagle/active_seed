@@ -2,7 +2,7 @@
 
 Although the inbuilt support for seeding in Rails works well for basic seeding. There are times when a little more versatility is required. ActiveSeed enables organisation of seed files so that seeding for different environments or even seeding new data to a live project is straight forward.
 
-== Installation.
+== Installation
 
 Simple add the following to your Gemfile
 
@@ -12,7 +12,7 @@ Then run:
 
     bundle install
 
-== Usage.
+== Usage
 
 The basic usage of ActiveSeed is to run
 
@@ -24,7 +24,7 @@ This will seed a set based on the current RAILS_ENV. If you want to specify a se
 
 The concepts of sets and seed data are explained below.
 
-=== Creating a Set.
+=== Creating a Set
 
 The purpose of a set file is to define a "set" of seed files. A set is defined in a YML file and stored in the RAILS_ROOT/db/active_seed. You can create a sample development set file by running the command:
 
@@ -52,7 +52,7 @@ Notice the "--- !omap" line and the fact that each line is started with a "-" ch
 Note also that in this example, User is being seeded from two separate files. This is quite handy as you can have development include both the real users and some nice sample data whereas in production.yml you could include only the production data.
 
 
-=== Creating the seed data.
+=== Creating the seed data
 
 The seed data files are csv files. A simple example is shown below:
 

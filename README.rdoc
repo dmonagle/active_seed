@@ -1,6 +1,109 @@
 = ActiveSeed
 
-= Installation
+Although the inbuilt support for seeding in Rails works well for basic seeding. There are times when a little more versatility is required. ActiveSeed enables organisation of seed files so that seeding for different environments or even seeding new data to a live project is straight forward.
 
-= Usage
+== Installation.
 
+Simple add the following to your Gemfile
+
+    gem 'active_seed', :git => "git://github.com/intrica/active_seed.git"
+    
+Then run:
+
+    bundle install
+
+== Usage.
+
+The basic usage of ActiveSeed is to run
+
+    rake db:active_seed
+
+This will seed a set based on the current RAILS_ENV. If you want to specify a set, run
+
+    rake db:active_seed SET=country_data
+
+The concepts of sets and seed data are explained below.
+
+=== Creating a Set.
+
+The purpose of a set file is to define a "set" of seed files. A set is defined in a YML file and stored in the RAILS_ROOT/db/active_seed. You can create a sample development set file by running the command:
+
+    rails g active_seed
+
+When seeding, the default set file used will be one named after the current RAILS_ENV. So in devleopment mode it will use the file
+
+    RAILS_ROOT/db/active_seed/development.yml
+
+The contents of the set file are fairly straight forward, take this example
+
+    # Example seeding file
+
+    # Each line referes to the model object to be created and the file that contains the data
+
+    # Make sure that the files are seeded in order by using !omap
+    --- !omap
+    # This will seed User items from the file db/seed/data/production_users.csv
+    - User: production_users
+    # This will seed User items from the file db/seed/data/development_users.csv
+    - User: development_users
+
+Notice the "--- !omap" line and the fact that each line is started with a "-" character. This ensures that the seeding is done in the order specified.
+ Each entry in this file simple corresponds to a model, and then the seed file assosiated with it.
+Note also that in this example, User is being seeded from two separate files. This is quite handy as you can have development include both the real users and some nice sample data whereas in production.yml you could include only the production data.
+
+
+=== Creating the seed data.
+
+The seed data files are csv files. A simple example is shown below:
+
+    username,first_name,password,password_confirmation,active
+    david,summer,summer,true
+    vincent,autumn,autumn,true
+    luke,winter,winter,true
+    tim,spring,spring,true
+
+Records are created from this data by creating a new Active Record model of the appropriate type and assigning these attributes to it. By seeding this way, all validations and callbacks are executed. This is why the password_confirmation field is present as otherwise the validation would fail.
+
+It would be nicer however if we could lose the duplication and also the fact that every user needs to have "true" for the active field.
+
+==== Static assignment
+
+Static assignment allows you to specify the value of a column in the header of the csv file, eliminating the need for that column to appear in the data below. Here is a version of the above example using static assignment:
+
+    username,first_name,password,password_confirmation,active=true
+    david,David,summer,summer
+    vincent,Vincent,autumn,autumn
+    luke,Luke,winter,winter
+    tim,Tim,spring,spring
+
+This simplifies the data by not requiring the active column to be defined for every record.
+
+==== Self Referencing
+
+Any static assignment can contain valid ruby code. Within this code, the variable "model" refers to the model being constructed. So the above example could again be simplified by doing this:
+
+    username,first_name,password,password_confirmation=model.password,active=true
+    david,David,summer
+    vincent,Vincent,autumn
+    luke,Luke,winter
+    tim,Tim,spring
+
+And simplified again by doing this:
+
+    first_name,username=model.first_name.downcase,password,password_confirmation=model.password,active=true
+    David,summer
+    Vincent,autumn
+    Luke,winter
+    Tim,spring
+
+As the attributes are set in order, you will notice that in the header in the example above, first_name now appears before username.
+
+==== Evaluations
+
+Evaluations are handy if you want to interpret data in the column rather than just assign it verbatim. Say for example we wanted a user to have a date of birth and be asigned to the appropriate role in the database. The role requires an id which belongs to another model. Here is an example of how to do both of these things:
+
+    first_name,username=model.first_name.downcase,password,password_confirmation=model.password,active=true,role_id=Role.find_by_name(?),Birthday=DateTime.parse(?)
+    David,summer,Admins,"17 April 1979"
+    Vincent,autumn,Users,"9th July 1976"
+
+As you can see, wherever the ? appears in the header, it is replaced with the value of the corresponding column.

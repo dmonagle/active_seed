@@ -6,6 +6,6 @@ class ActiveSeedGenerator < Rails::Generators::Base
   end
 
   def create_files
-      copy_file 'development.yml', "db/seed/development.yml"
+      copy_file 'development.yml', "db/active_seed/development.yml"
   end
 end

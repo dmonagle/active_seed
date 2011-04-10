@@ -4,7 +4,7 @@ namespace :db do
     require "active_seed/seed_csv"
     set = ENV["set"] 
     set = RAILS_ENV unless !set.nil?
-    set_file = File.join(RAILS_ROOT, "db", "active_seed", set, ".yml")
+    set_file = File.join(RAILS_ROOT, "db", "active_seed", set + ".yml")
     if !File.exists?(set_file)
     	puts "Set file doesn't exist: " << set_file
 	    return

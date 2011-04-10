@@ -107,3 +107,5 @@ Evaluations are handy if you want to interpret data in the column rather than ju
     Vincent,autumn,Users,"9th July 1976"
 
 As you can see, wherever the ? appears in the header, it is replaced with the value of the corresponding column.
+
+== Potential Issues

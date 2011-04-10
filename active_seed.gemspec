@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{active_seed}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Monagle"]
-  s.date = %q{2011-04-04}
-  s.description = %q{Gives the ability to seed data by inserting it via activerecord. Also allows you to manage sets of data and seed based on the current environment.}
+  s.date = %q{2011-04-10}
+  s.description = %q{ActiveSeed Gives the ability to seed data by inserting it via activerecord. Also allows you to manage sets of data and seed based on the current environment.}
   s.email = %q{david.monagle@intrica.com.au}
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -21,6 +21,8 @@ Gem::Specification.new do |s|
     "lib/active_seed/seed_csv.rb",
     "lib/generators/active_seed/active_seed_generator.rb",
     "lib/generators/active_seed/templates/development.yml",
+    "lib/generators/active_seed/templates/html_color_families.csv",
+    "lib/generators/active_seed/templates/html_colors.csv",
     "lib/tasks/active_seed_tasks.rake"
   ]
   s.homepage = %q{http://www.intrica.com.au/}

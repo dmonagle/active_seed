@@ -4,7 +4,7 @@ begin
     gem.name = "active_seed"
     gem.summary = "Seeds data using activerecord."
     gem.description = "ActiveSeed Gives the ability to seed data by inserting it via activerecord. Also allows you to manage sets of data and seed based on the current environment."
-    gem.version = "1.0.0"
+    gem.version = "1.0.1"
     gem.author = "David Monagle"
     gem.email = "david.monagle@intrica.com.au"
     gem.homepage = "http://www.intrica.com.au/"

@@ -16,9 +16,13 @@ To create the basic seeding template run
 
     rails g active_seed:install
 
+== Quick Example
+
 If you would like an example of usage, you can use the following generator. Be aware this will create models in your project.
 
     rails g active_seed:example_html_colors
+    rake db:migrate
+    rake db:active_seed set=html_colors
 
 == Usage
 
@@ -28,7 +32,7 @@ The basic usage of ActiveSeed is to run
 
 This will seed a set based on the current RAILS_ENV. If you want to specify a set, run
 
-    rake db:active_seed SET=country_data
+    rake db:active_seed set=html_colors
 
 The concepts of sets and seed data are explained below.
 

@@ -6,7 +6,7 @@ Although the inbuilt support for seeding in Rails works well for basic seeding. 
 
 Simple add the following to your Gemfile
 
-    gem 'active_seed', :git => "git://github.com/intrica/active_seed.git"
+    gem 'active_seed'
     
 Then run:
 

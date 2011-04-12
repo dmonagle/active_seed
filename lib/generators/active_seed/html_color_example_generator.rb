@@ -1,6 +1,6 @@
 require 'rails/generators'
 
-module IntricaCms
+module ActiveSeed
   module Generators
     class HtmlColorExampleGenerator < Rails::Generators::Base
       def self.source_root

@@ -2,9 +2,9 @@ require 'rails/generators'
 
 module ActiveSeed
   module Generators
-    class HtmlColorExampleGenerator < Rails::Generators::Base
+    class ExampleHtmlColorsGenerator < Rails::Generators::Base
       def self.source_root
-        @source_root ||= File.join(File.dirname(__FILE__), 'templates', 'html_color_example')
+        @source_root ||= File.join(File.dirname(__FILE__), 'templates', 'example_html_colors')
       end
 
       def create_files

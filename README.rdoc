@@ -12,6 +12,14 @@ Then run:
 
     bundle install
 
+To create the basic seeding template run
+
+    rails g active_seed:install
+
+If you would like an example of usage, you can use the following generator. Be aware this will create models in your project.
+
+    rails g active_seed:example_html_colors
+
 == Usage
 
 The basic usage of ActiveSeed is to run

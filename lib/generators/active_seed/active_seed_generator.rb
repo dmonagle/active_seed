@@ -6,6 +6,10 @@ class ActiveSeedGenerator < Rails::Generators::Base
   end
 
   def create_files
-      copy_file 'development.yml', "db/active_seed/development.yml"
+      install_dir = File.join('db', 'active_seed')
+      copy_file 'development.yml', File.join(install_dir, 'development.yml')
+      copy_file 'development.yml', File.join(install_dir, 'production.yml')
+      copy_file 'development.yml', File.join(install_dir, 'test.yml')
+      empty_directory File.join(install_dir, 'data')
   end
 end

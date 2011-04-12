@@ -1,0 +1,8 @@
+# Example seeding file
+
+# Each line referes to the model object to be created and the file that contains the data
+
+# Make sure that the files are seeded in order by using !omap
+--- !omap
+- HtmlColorFamily: html_colors/html_color_families
+- HtmlColor: html_colors/html_colors

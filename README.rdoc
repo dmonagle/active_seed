@@ -42,7 +42,7 @@ The purpose of a set file is to define a "set" of seed files. A set is defined i
 
     rails g active_seed
 
-When seeding, the default set file used will be one named after the current RAILS_ENV. So in devleopment mode it will use the file
+When seeding, the default set file used will be one named after the current RAILS_ENV. So in development mode it will use the file
 
     RAILS_ROOT/db/active_seed/development.yml
 

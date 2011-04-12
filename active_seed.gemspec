@@ -5,27 +5,38 @@
 
 Gem::Specification.new do |s|
   s.name = %q{active_seed}
-  s.version = "1.0.1"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Monagle"]
-  s.date = %q{2011-04-10}
+  s.date = %q{2011-04-12}
   s.description = %q{ActiveSeed Gives the ability to seed data by inserting it via activerecord. Also allows you to manage sets of data and seed based on the current environment.}
   s.email = %q{david.monagle@intrica.com.au}
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
   s.files = [
+    "Gemfile",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "active_seed.gemspec",
     "lib/active_seed.rb",
     "lib/active_seed/engine.rb",
     "lib/active_seed/seed_csv.rb",
-    "lib/generators/active_seed/active_seed_generator.rb",
+    "lib/generators/active_seed/example_html_colors_generator.rb",
+    "lib/generators/active_seed/install_generator.rb",
     "lib/generators/active_seed/templates/development.yml",
-    "lib/generators/active_seed/templates/html_color_families.csv",
-    "lib/generators/active_seed/templates/html_colors.csv",
+    "lib/generators/active_seed/templates/example_html_colors/create_html_colors.rb",
+    "lib/generators/active_seed/templates/example_html_colors/html_color.rb",
+    "lib/generators/active_seed/templates/example_html_colors/html_color_family.rb",
+    "lib/generators/active_seed/templates/example_html_colors/html_colors.yml",
+    "lib/generators/active_seed/templates/example_html_colors/html_colors/html_color_families.csv",
+    "lib/generators/active_seed/templates/example_html_colors/html_colors/html_colors.csv",
     "lib/tasks/active_seed_tasks.rake"
   ]
-  s.homepage = %q{http://www.intrica.com.au/}
+  s.homepage = %q{http://github.com/intrica/active_seed}
+  s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.3}
   s.summary = %q{Seeds data using activerecord.}
@@ -34,9 +45,15 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
     else
+      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
     end
   else
+    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
   end
 end
 

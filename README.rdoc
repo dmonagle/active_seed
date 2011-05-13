@@ -120,4 +120,10 @@ Evaluations are handy if you want to interpret data in the column rather than ju
 
 As you can see, wherever the ? appears in the header, it is replaced with the value of the corresponding column.
 
-== Potential Issues
+== Using from within your code
+
+If you would like to seed a set directly from within other code, for example if you wanted to seed the "test" set at the start of your cucumber tests you can add the following to your code:
+
+    require "active_seed"
+
+    ActiveSeed.seed("test")

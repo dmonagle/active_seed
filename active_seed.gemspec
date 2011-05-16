@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{active_seed}
-  s.version = "1.0.3"
+  s.version = "1.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Monagle"]
-  s.date = %q{2011-04-12}
+  s.date = %q{2011-05-16}
   s.description = %q{ActiveSeed Gives the ability to seed data by inserting it via activerecord. Also allows you to manage sets of data and seed based on the current environment.}
   s.email = %q{david.monagle@intrica.com.au}
   s.extra_rdoc_files = [
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "active_seed.gemspec",
     "lib/active_seed.rb",
+    "lib/active_seed/active_seed.rb",
     "lib/active_seed/engine.rb",
     "lib/active_seed/seed_csv.rb",
     "lib/generators/active_seed/example_html_colors_generator.rb",

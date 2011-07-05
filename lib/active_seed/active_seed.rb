@@ -43,14 +43,15 @@ module ActiveSeed
           unless (header[count].strip == "nil")
             value = d[count]
             value = "" if value.nil?
-            value = "'" + value.strip.gsub(/'/, "\\\\'") + "'"
+            value = "'" + value.strip.gsub(/'/, "\\\\'") + "'" 
             if evaluations[count].nil?
               assignment = value
             else
-              assignment = evaluations[count].split("?")
-              assignment = assignment.join(value)
+	      assignment = evaluations[count].gsub(/\?+/) do |s|
+	        s.size == 2 ? "?" : value 
+	      end
             end
-            code += "model." + header[count].strip + "=" + assignment + "\n"
+            code += "model." + header[count].strip + "=" + assignment + "\n" 
           end
         end
         # Add in the statics
